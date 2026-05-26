@@ -15,13 +15,15 @@ def fetch_and_save_price():
     
     response = requests.get(COINGECKO_URL, params=params, timeout=10)
     data = response.json()
-    
+
     price = data["tether"]["usd"]
+    volume_24h = data["tether"]["usd_24h_vol"]
     
     record = USDTPrice.objects.create(
         exchange="CoinGecko",
-        price=price
+        price=price,
+        volume_24h=volume_24h,
     )
     
-    print(f"Saved: ${price} | Deviation: {record.deviation:+.4f}%")
+    print(f"Saved: ${price} | Volume 24h: {volume_24h} | Deviation: {record.deviation:+.4f}%")
     return record

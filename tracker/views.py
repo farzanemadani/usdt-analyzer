@@ -44,6 +44,7 @@ def market_status(request):
     
     return Response({
         "price": latest.price,
+        "volume_24h": latest.volume_24h,
         "deviation": latest.deviation,
         "status": latest.bubble_status,
         "updated_at": latest.created_at
