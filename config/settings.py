@@ -29,6 +29,12 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
+# Celery
+CELERY_BROKER_URL       = config('REDIS_URL', default='redis://localhost:6379/0')
+CELERY_RESULT_BACKEND   = config('REDIS_URL', default='redis://localhost:6379/0')
+CELERY_TIMEZONE         = 'UTC'
+CELERY_BEAT_SCHEDULER   = 'django_celery_beat.schedulers:DatabaseScheduler'
+
 
 # Application definition
 
@@ -42,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'tracker',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
