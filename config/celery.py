@@ -12,6 +12,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'fetch-usdt-price': {
         'task': 'tracker.tasks.fetch_price_task',
-        'schedule': crontab(minute='*/15'),
+        'schedule': crontab(minute='*'),
     },
 }
