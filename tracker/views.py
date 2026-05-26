@@ -12,7 +12,7 @@ def latest_prices(request):
     Returns:
         Response: A list of serialized USDTPrice objects.
     """
-    prices = USDTPrice.objects.order_by('-created_at')[:20]
+    prices = USDTPrice.objects.order_by('-created_at')[:60]
     serializer = USDTPriceSerializer(prices, many=True)
     return Response(serializer.data)
 
