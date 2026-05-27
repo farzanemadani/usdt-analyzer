@@ -13,7 +13,7 @@ def cleanup_old_prices():
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(fetch_and_save_price, 'interval', minutes=1)
+    scheduler.add_job(fetch_and_save_price, 'interval', seconds=30)
 
     scheduler.add_job(cleanup_old_prices, 'cron', hour=3, minute=0)
     scheduler.start()
